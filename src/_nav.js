@@ -6,130 +6,66 @@ export default {
       icon: 'Home',
     },
     {
-      name: 'UI Elements',
-      icon: 'Layers',
-      children: [
-        {
-          name: 'Buttons',
-          url: '/elements/buttons',
-        },
-        {
-          name: 'Grid',
-          url: '/elements/grid',
-        },
-        {
-          name: 'Alerts',
-          url: '/elements/alerts',
-        },
-        {
-          name: 'Typography',
-          url: '/elements/typography',
-        },
-        {
-          name: 'Cards',
-          url: '/elements/cards',
-        },
-        {
-          name: 'Tabs',
-          url: '/elements/tabs',
-        },
-        {
-          name: 'Tables',
-          url: '/elements/tables',
-        },
-        {
-          name: 'Breadcrumbs',
-          url: '/elements/breadcrumbs',
-        },
-        {
-          name: 'Forms',
-          url: '/elements/forms',
-        },
-        {
-          name: 'Modals',
-          url: '/elements/modals',
-        },
-        {
-          name: 'Loaders',
-          url: '/elements/loaders',
-        },
-        {
-          name: 'Avatars',
-          url: '/elements/avatars',
-        },
-        {
-          name: 'Progress Bars',
-          url: '/elements/progressbars',
-        },
-        {
-          name: 'Pagination',
-          url: '/elements/pagination',
-        },
-      ],
+      name: 'Video',
+      url: '/video',
+      icon: 'Play',
     },
     {
-      name: 'Pages',
-      icon: 'File',
-      children: [
-        {
-          name: 'Blank',
-          url: '/pages/blank',
-        },
-        {
-          name: 'Sub Navigation',
-          url: '/pages/subnav',
-        },
-        {
-          name: '404',
-          url: '/pages/404',
-        },
-      ],
+      name: 'Playback',
+      url: '/playback',
+      icon: 'Video',
     },
     {
-      name: 'Apps',
+      name: 'Admin',
       icon: 'Cloud',
       children: [
         {
-          name: 'Analytics',
-          url: '/apps/analytics',
+          name: 'Users',
+          url: '/users',
+          icon: 'User',
         },
         {
-          name: 'Invoice',
-          url: '/apps/invoice',
+          name: 'Cameras',
+          url: '/cameras',
+          icon: 'Camera',
         },
         {
-          name: 'Activity Feed',
-          url: '/apps/feed',
+          name: 'Smart Sensor',
+          url: '/SmartSensors',
+          icon: 'Wifi',
         },
         {
-          name: 'CMS',
-          url: '/apps/cms',
+          name: 'System Settings',
+          url: '/SystemSettings',
+          icon: 'Settings',
         },
+        // {
+        //   name: 'Recording',
+        //   url: '/recording',
+        //   icon: 'Save',
+        // },
+        // {
+        //   name: 'Events',
+        //   url: '/event',
+        //   icon: 'Package',
+        // }
       ],
     },
     {
       divider: true,
-    },
-    {
-      name: 'Widgets',
-      url: '/widgets',
-      icon: 'Package',
-      badge: {
-        text: 'NEW',
-      },
-    },
+    }
   ],
   bottom: [
     {
-      name: 'Get Vibe',
-      url: 'https://github.com/NiceDash/Vibe',
+      name: 'Get Viwe',
+      url: '/home',
       icon: 'GitHub',
       external: true,
       target: '_blank',
     },
     {
       name: 'Account',
-      url: '/dashboard',
+      url: '/home',
       icon: 'User',
       badge: {
         variant: 'success',

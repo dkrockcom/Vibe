@@ -1,0 +1,225 @@
+// #app {
+//     background-color: #000;
+// }
+
+.site-video-layout {
+    margin-top: 6px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.cam-layout-body {
+    padding-right: 0.1em;
+    padding-top: 0.1em;
+    padding-left: 0.1em;
+    padding-bottom: 0.1em;
+}
+
+.site-video-row-one {
+    padding-top: 1px !important;
+    padding-right: 1px !important;
+    padding-bottom: 0px !important;
+    padding-left: 1px !important;
+}
+
+.site-video-row-two {
+    padding-top: 1px !important;
+    padding-right: 1px !important;
+    padding-bottom: 0px !important;
+    padding-left: 1px !important;
+}
+
+.site-video-row-three {
+    padding-top: 1px !important;
+    padding-right: 1px !important;
+    padding-bottom: 0px !important;
+    padding-left: 1px !important;
+}
+
+.layout-row-one {
+    max-height: 100vh;
+}
+
+.layout-row-two {
+    max-height: 33vh;
+}
+
+.layout-row-three {
+    max-height: 25vh;
+}
+
+.layout-col-four {
+    max-height: 34vh;
+}
+
+.live-video-screen {
+    .col-md-3 {
+        flex: none;
+    }
+
+    .col-md-4 {
+        flex: none;
+    }
+
+    .col-md-6 {
+        flex: none;
+    }
+}
+
+#primary-content {
+    padding: 10px !important;
+}
+
+// timeline
+#visualization {
+    background-color: #000;
+}
+.vis-text {
+    color: #ffffff !important;
+}
+
+.vis-panel.vis-bottom {
+    background-color: #ffffff;
+}
+.vis-item .vis-item-overflow {
+    background: rgba(109, 154, 192, 1);
+    overflow: hidden;
+}
+.vis-item.vis-line {
+    display: none;
+}
+// div.vis-tooltip {
+//     position: absolute;
+//     visibility: hidden;
+//     padding: 5px;
+//     white-space: nowrap;
+//     font-family: verdana;
+//     font-size: 14px;
+//     color: #000;
+//     background-color: #f5f4ed;
+//     -moz-border-radius: 3px;
+//     -webkit-border-radius: 3px;
+//     border-radius: 3px;
+//     border: 1px solid #808074;
+//     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+//     pointer-events: none;
+//     z-index: 5;
+// }
+// /***** timeline ****/
+// .vis-panel.vis-bottom {
+//     background-color: transparent !important;
+// }
+
+// .vis-time-axis .vis-text {
+//     color: #a3a3a3 !important;
+//     padding: 0 !important;
+//     font-size: 0.91em !important;
+// }
+
+// .vis-timeline {
+//     border: 1px solid #2c3338 !important;
+//     height: 71px !important;
+// }
+
+// .vis-item.vis-box {
+//     border-style: none !important;
+//     // bottom: 0 !important;
+// }
+
+// .vis-item {
+//     background-color: transparent !important;
+// }
+
+// .vis-item .vis-item-content {
+//     padding: 0px 5px !important;
+// }
+
+// .vis-labelset .vis-label .vis-inner {
+//     color: #b8b8b8 !important;
+//     height: 10px !important;
+//     left: 0;
+//     // display: none !important;
+// }
+
+// .vis-time-axis .vis-grid.vis-minor {
+//     border-color: transparent !important;
+// }
+
+// .vis-background {
+//     bottom: auto !important;
+// }
+
+// .vis-foreground .vis-group {
+//     border-bottom: 1px solid #bfbfbf47 !important;
+//     min-height: 20px;
+// }
+
+// .vis-labelset .vis-label {
+//     border-bottom: 1px solid #bfbfbf47 !important;
+//     min-height: 20px;
+// }
+
+// .vis-panel.vis-bottom,
+// .vis-panel.vis-center,
+// .vis-panel.vis-left,
+// .vis-panel.vis-right,
+// .vis-panel.vis-top {
+//     border: 1px transparent !important;
+// }
+
+// .vis-custom-time {
+//     background-color: red !important;
+// }
+// .timelineBookmark {
+//     .vis-foreground .vis-group {
+//         border-bottom: hidden !important;
+//     }
+//     .vis-timeline {
+//         border: hidden !important;
+//         height: 100% !important;
+//         z-index: 99;
+//     }
+//     .vis-dot {
+//         visibility: hidden;
+//     }
+//     .vis-background {
+//         visibility: hidden;
+//     }
+//     .vis-drag-center {
+//         cursor: pointer !important;
+//     }
+// }
+// .timeline {
+//     .bookmark-ring {
+//         visibility: hidden;
+//         height: 0px;
+//         width: 0px;
+//     }
+//     .vis-dot {
+//         visibility: hidden;
+//     }
+// }
+// end Timeline
+.login-container {
+    background-color: #212529;
+}
+
+.login-form {
+    color: #ffffff;
+}
+
+.login-form h2 {
+    color: #ffffff;
+}
+
+.login-bottom-text {
+    display: inline-flex !important;
+}
+
+.login-bottom-text p {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}

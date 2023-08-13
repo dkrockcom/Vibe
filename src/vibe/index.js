@@ -9,7 +9,6 @@ import PageAlert from './components/PageAlert/PageAlert';
 import SidebarNav from './components/SidebarNav/SidebarNav';
 import SubNavigation from './components/Page/SubNavigation';
 import Switch from './components/utilities/Switch/Switch';
-import Chat from './components/Chat/Chat';
 
 export {
   Avatar,
@@ -21,7 +20,6 @@ export {
   SidebarNav,
   Switch,
   SubNavigation,
-  Chat,
   PageLoader,
   PageAlert
 };

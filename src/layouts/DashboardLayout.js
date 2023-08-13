@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { Button, Badge, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { Header, SidebarNav, Footer, PageContent, Avatar, Chat, PageAlert, Page } from '../vibe';
+import { Badge, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Header, SidebarNav, Footer, PageContent, Avatar, PageAlert, Page } from '../vibe';
 import Logo from '../assets/images/vibe-logo.svg';
-import avatar1 from '../assets/images/avatar1.png';
 import nav from '../_nav';
 import routes from '../views';
 import ContextProviders from '../vibe/components/utilities/ContextProviders';
 import handleKeyAccessibility, { handleClickAccessibility } from '../vibe/helpers/handleTabAccessibility';
+import Select from 'react-select';
+import { connect } from 'react-redux';
+import { selectedCamera as selectCamera } from './../redux/actions';
+import api from './../util/api';
 
 const MOBILE_SIZE = 992;
 
@@ -16,8 +19,7 @@ export default class DashboardLayout extends Component {
     super(props);
     this.state = {
       sidebarCollapsed: false,
-      isMobile: window.innerWidth <= MOBILE_SIZE,
-      showChat1: true,
+      isMobile: window.innerWidth <= MOBILE_SIZE
     };
   }
 
@@ -49,10 +51,6 @@ export default class DashboardLayout extends Component {
     this.setState(prevState => ({ sidebarCollapsed: !prevState.sidebarCollapsed }));
   };
 
-  closeChat = () => {
-    this.setState({ showChat1: false });
-  };
-
   render() {
     const { sidebarCollapsed } = this.state;
     const sidebarCollapsedClass = sidebarCollapsed ? 'side-menu-collapsed' : '';
@@ -64,30 +62,32 @@ export default class DashboardLayout extends Component {
             <SidebarNav
               nav={nav}
               logo={Logo}
-              logoText="VIBE."
+              logoText="VIWE"
               isSidebarCollapsed={sidebarCollapsed}
               toggleSidebar={this.toggleSideCollapse}
               {...this.props}
             />
-            <Page>
+            <Page
+            >
               <Header
                 toggleSidebar={this.toggleSideCollapse}
                 isSidebarCollapsed={sidebarCollapsed}
                 routes={routes}
                 {...this.props}
               >
-                <HeaderNav />
+                <HeaderNav props={this.props} />
               </Header>
               <PageContent>
                 <Switch>
                   {routes.map((page, key) => (
                     <Route path={page.path} component={page.component} key={key} />
                   ))}
-                  <Redirect from="/" to="/home" />
+                  <Redirect from="/" to="/404" />
                 </Switch>
               </PageContent>
             </Page>
           </div>
+          {/* <div className="app-footer" /> */}
           <Footer>
             <span>Copyright © 2019 Nice Dash. All rights reserved.</span>
             <span>
@@ -100,52 +100,96 @@ export default class DashboardLayout extends Component {
               </span>
             </span>
           </Footer>
-          <Chat.Container>
-            {this.state.showChat1 && (
-              <Chat.ChatBox name="Messages" status="online" image={avatar1} close={this.closeChat} />
-            )}
-          </Chat.Container>
         </div>
       </ContextProviders>
     );
   }
 }
 
-function HeaderNav() {
-  return (
-    <React.Fragment>
-      <NavItem>
-        <form className="form-inline">
-          <input className="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" />
-          <Button type="submit" className="d-none d-sm-block">
-            <i className="fa fa-search" />
-          </Button>
-        </form>
-      </NavItem>
-      <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav caret>
-          New
-        </DropdownToggle>
-        <DropdownMenu right>
-          <DropdownItem>Project</DropdownItem>
-          <DropdownItem>User</DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>
-            Message <Badge color="primary">10</Badge>
-          </DropdownItem>
-        </DropdownMenu>
-      </UncontrolledDropdown>
-      <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav>
-          <Avatar size="small" color="blue" initials="JS" />
-        </DropdownToggle>
-        <DropdownMenu right>
-          <DropdownItem>Option 1</DropdownItem>
-          <DropdownItem>Option 2</DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>Reset</DropdownItem>
-        </DropdownMenu>
-      </UncontrolledDropdown>
-    </React.Fragment>
-  );
+// const options = [
+//   { value: 'chocolate', label: 'Chocolate' },
+//   { value: 'strawberry', label: 'Strawberry' },
+//   { value: 'vanilla', label: 'Vanilla' },
+// ];
+
+class HeaderNav extends React.PureComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.onLogout = this.onLogout.bind(this);
+    this.onProfile = this.onProfile.bind(this);
+  }
+
+  onLogout() {
+    api.post("/Logout", {}, (res) => {
+      this.props.props.history.push('/Login');
+    });
+  }
+
+  onProfile() {
+    debugger
+  }
+
+  render() {
+    const { cameraRecord, selectedCamera } = this.props;
+    const { camData } = cameraRecord;
+    let isPlaybackscreen = this.props.props.location.pathname.indexOf("playback") > -1;
+    let options = camData.map(e => { return { value: e.Id, label: e.Name } });
+    return (
+      <React.Fragment>
+        <NavItem>
+          {/* <form className="form-inline">
+            <input className="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" />
+            <Button type="submit" className="d-none d-sm-block">
+              <i className="fa fa-search" />
+            </Button>
+          </form> */}
+          {
+            isPlaybackscreen && <div className="form-inline" style={{ width: '200px', display: 'block' }}>
+              <Select
+                styles={{
+                  width: "400px"
+                }}
+                value={selectedCamera.camera}
+                onChange={(item) => {
+                  this.props.dispatch(selectCamera({ camera: item }));
+                }}
+                options={options}
+              />
+            </div>
+          }
+        </NavItem>
+        {/* <UncontrolledDropdown nav inNavbar>
+          <DropdownToggle nav caret>
+            New
+          </DropdownToggle>
+          <DropdownMenu right>
+            <DropdownItem>Project</DropdownItem>
+            <DropdownItem>User</DropdownItem>
+            <DropdownItem divider />
+            <DropdownItem>
+              Message <Badge color="primary">10</Badge>
+            </DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown> */}
+        <UncontrolledDropdown nav inNavbar>
+          <DropdownToggle nav>
+            <Avatar image={Logo} size="small" initials="JS" />
+          </DropdownToggle>
+          <DropdownMenu right>
+            <DropdownItem onClick={this.onProfile}>Profile</DropdownItem>
+            <DropdownItem divider />
+            <DropdownItem onClick={this.onLogout}>Logout</DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+      </React.Fragment>
+    );
+  }
 }
+HeaderNav = connect((state) => {
+  return {
+    cameraRecord: state.cameraRecord,
+    selectedCamera: state.selectedCamera
+  }
+})(HeaderNav);
