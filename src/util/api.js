@@ -7,7 +7,7 @@ class API {
     static _instance = null;
     static get baseUrl() {
         const { protocol, hostname, origin } = window.location;
-        return origin.indexOf("localhost") > -1 || origin.indexOf("192.168.29.46") > -1 ? (protocol + "//" + hostname) : origin;
+        return origin.indexOf("localhost") > -1 || origin.indexOf("192.168.92.195") > -1 ? (protocol + "//" + hostname) : origin;
     }
     static get instance() {
         if (!this._instance) {

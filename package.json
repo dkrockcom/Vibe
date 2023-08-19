@@ -18,13 +18,13 @@
     "react": "^18.2.0",
     "react-chartjs-2": "2.6.4",
     "react-data-grid": "^7.0.0-canary.47",
-    "react-dom": "^16.8.1",
+    "react-dom": "^18.2.0",
     "react-feather": "^1.1.6",
     "react-flv-player": "^1.0.9",
     "react-fontawesome": "1.6.1",
     "react-loading": "^2.0.3",
     "react-redux": "^7.2.4",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^6.6.2",
     "react-scripts": "^5.0.1",
     "react-select": "^4.3.1",
     "reactjs-player": "^1.2.1",
@@ -32,7 +32,10 @@
     "redux": "^4.1.0",
     "redux-form": "^8.3.7",
     "redux-thunk": "^2.3.0",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "fbemitter": "^3.0.0",
+    "react-swf": "^1.0.7",
+    "numeral": "^2.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

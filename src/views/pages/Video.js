@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Row, Col,
+    Row, Col, CardBody, Card
 } from 'reactstrap';
 import FLVPlayer from './../../common/FLVPlayer';
 import api from '../../util/api';
@@ -72,7 +72,7 @@ class Video extends Component {
                 {
                     item.isBlank
                         ?
-                        <div style={{ height: camHeight, backgroundColor: "#000", color: "#fff" }}>Camera Not Setup</div> :
+                        <div className='index-module_reactPlayer__1bzwF' style={{ height: camHeight, backgroundColor: "#000", color: "#fff" }}>Camera Not Setup</div> :
                         <FLVPlayer height={camHeight} controls={false} url={url} camId={index} />
                 }
             </Col>
@@ -98,7 +98,7 @@ class Video extends Component {
 
     render() {
         // return (
-        //     <Card style={{ height: height }}>
+        //     <Card style={{ height: window.innerHeight - 170, backgroundColor: "red" }}>
         //         <CardBody>
         //             <Row>
         //                 <Col xs="6">
@@ -111,13 +111,15 @@ class Video extends Component {
         //         </CardBody>
         //     </Card>
         // )
-
+        let data = JSON.parse(JSON.stringify(this.cameraData));
+        // data[1] = { ...data[0] };
+        console.log(data);
         return (
             <div className="live-video-screen">
                 <Row>
                     {
 
-                        this.cameraData.slice(0, 4).map((ele, index) => {
+                        data.slice(0, 2).map((ele, index) => {
                             return <div key={index} className={'site-video site-video-padding card-body cam-layout-body'}>
                                 {this.getCameraView(ele, index)}
                             </div>
@@ -128,7 +130,7 @@ class Video extends Component {
                 <Row>
                     {
 
-                        this.cameraData.slice(4, 8).map((ele, index) => {
+                        data.slice(2, 4).map((ele, index) => {
                             return <div key={index} className={'site-video site-video-padding card-body cam-layout-body'}>
                                 {this.getCameraView(ele, index)}
                             </div>

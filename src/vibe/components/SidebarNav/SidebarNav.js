@@ -51,7 +51,7 @@ export default class SidebarNav extends Component {
                   <ul id="main-menu">
                     {navItems(this.props.nav.top)}
                     <NavSpacer />
-                    {navItems(this.props.nav.bottom)}
+                    {/* {navItems(this.props.nav.bottom)} */}
                   </ul>
                 </nav>
               </div>
