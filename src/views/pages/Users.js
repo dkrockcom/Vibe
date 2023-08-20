@@ -5,20 +5,19 @@ import {
     CardHeader,
     Button
 } from 'reactstrap';
-import DataGrid from 'react-data-grid';
 import api from './../../util/api';
+import DataTable from 'react-data-table-component';
 
 class Users extends Component {
 
     state = {
         columns: [
-            { key: 'Name', name: 'Name' },
-            { key: 'Username', name: 'Username' },
-            { key: 'Role', name: 'Role' },
+            { key: 'Name', name: 'Name', selector: row => row.Name, },
+            { key: 'Username', name: 'Username', selector: row => row.Username, },
+            { key: 'Role', name: 'Role', selector: row => row.Role, },
         ],
 
         rows: [
-
         ]
     }
 
@@ -30,7 +29,7 @@ class Users extends Component {
         });
     }
 
-    onRowClick = (index, row) => {
+    onRowClick = (row) => {
         this.props.history.push(`/user/${row.Id}`);
     }
 
@@ -46,7 +45,11 @@ class Users extends Component {
                     <Button color="success" onClick={this.onAdd} >Add</Button>
                 </CardHeader>
                 <CardBody>
-                    <DataGrid onRowClick={this.onRowClick} columns={columns} rows={rows} />
+                    <DataTable
+                        onRowClicked={this.onRowClick}
+                        columns={columns}
+                        data={rows}
+                    />
                 </CardBody>
             </Card>
         )

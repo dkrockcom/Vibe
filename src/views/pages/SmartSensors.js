@@ -5,16 +5,16 @@ import {
     CardHeader,
     Button
 } from 'reactstrap';
-import DataGrid from 'react-data-grid';
+import DataTable from 'react-data-table-component';
 import api from '../../util/api';
 
 class SmartSensors extends Component {
 
     state = {
         columns: [
-            { key: 'Name', name: 'Name' },
-            { key: 'MacAddress', name: 'Mac Address' },
-            { key: 'Location', name: 'Location' },
+            { key: 'Name', name: 'Name', selector: row => row.Name },
+            { key: 'MacAddress', name: 'Mac Address', selector: row => row.MacAddress },
+            { key: 'Location', name: 'Location', selector: row => row.Location }
         ],
 
         rows: [
@@ -30,7 +30,7 @@ class SmartSensors extends Component {
         });
     }
 
-    onRowClick = (index, row) => {
+    onRowClick = (row) => {
         this.props.history.push(`/SmartSensor/${row.Id}`);
     }
 
@@ -46,7 +46,11 @@ class SmartSensors extends Component {
                     <Button color="success" onClick={this.onAdd} >Add</Button>
                 </CardHeader>
                 <CardBody>
-                    <DataGrid onRowClick={this.onRowClick} columns={columns} rows={rows} />
+                    <DataTable
+                        onRowClicked={this.onRowClick}
+                        columns={columns}
+                        data={rows}
+                    />
                 </CardBody>
             </Card>
         )

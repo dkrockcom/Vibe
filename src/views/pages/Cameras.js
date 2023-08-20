@@ -5,20 +5,20 @@ import {
     CardHeader,
     Button
 } from 'reactstrap';
-import DataGrid from 'react-data-grid';
+import DataTable from 'react-data-table-component';
 import api from './../../util/api';
 
 class Cameras extends Component {
 
     state = {
         columns: [
-            { key: 'Name', name: 'Name' },
-            { key: 'Ip', name: 'Ip' },
-            { key: 'Port', name: 'Port' },
-            { key: 'Brand', name: 'Brand' },
-            { key: 'Connected', name: 'Connected' },
-            { key: 'IsDetectionEnabled', name: 'Detection Enabled' },
-            { key: 'IsRecordingEnabled', name: 'Recording Enabled' }
+            { key: 'Name', name: 'Name', selector: row => row.Name },
+            { key: 'Ip', name: 'Ip', selector: row => row.Ip },
+            { key: 'Port', name: 'Port', selector: row => row.Port },
+            { key: 'Brand', name: 'Brand', selector: row => row.Brand },
+            { key: 'Connected', name: 'Connected', selector: row => row.Connected },
+            { key: 'IsDetectionEnabled', name: 'Detection Enabled', selector: row => row.IsDetectionEnabled },
+            { key: 'IsRecordingEnabled', name: 'Recording Enabled', selector: row => row.IsRecordingEnabled }
         ],
         rows: []
     }
@@ -31,7 +31,7 @@ class Cameras extends Component {
         })
     }
 
-    onRowClick = (index, row) => {
+    onRowClick = (row) => {
         this.props.history.push(`/camera/${row.Id}`);
     }
 
@@ -47,7 +47,11 @@ class Cameras extends Component {
                     <Button color="success" onClick={this.onAdd} >Add</Button>
                 </CardHeader>
                 <CardBody>
-                    <DataGrid onRowClick={this.onRowClick} columns={columns} rows={rows} />
+                    <DataTable
+                        onRowClicked={this.onRowClick}
+                        columns={columns}
+                        data={rows}
+                    />
                 </CardBody>
             </Card>
         )
